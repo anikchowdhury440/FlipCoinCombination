@@ -58,6 +58,64 @@ dictCombinationPercentage[HT]=$(( $HT_count*100/$n ))
 dictCombinationPercentage[TH]=$(( $TH_count*100/$n ))
 dictCombinationPercentage[TT]=$(( $TT_count*100/$n ))
 
+HHH_count=0
+HHT_count=0
+HTH_count=0
+HTT_count=0
+THH_count=0
+THT_count=0
+TTH_count=0
+TTT_count=0
+
+for (( i=0;i<n;i++ ))
+do
+        coin_flip_result1=$(( RANDOM%2 ))
+        coin_flip_result2=$(( RANDOM%2 ))
+        coin_flip_result3=$(( RANDOM%2 ))
+        if [[ $coin_flip_result1 -eq 0 && $coin_flip_result2 -eq 0 && $coin_flip_result3 -eq 0 ]]
+        then
+                (( HHH_count++ ))
+        elif [[ $coin_flip_result1 -eq 0 && $coin_flip_result2 -eq 0 && $coin_flip_result3 -eq 1 ]]
+        then
+                (( HHT_count++ ))
+        elif [[ $coin_flip_result1 -eq 0 && $coin_flip_result2 -eq 1 && $coin_flip_result3 -eq 0 ]]
+        then
+                (( HTH_count++ ))
+        elif [[ $coin_flip_result1 -eq 0 && $coin_flip_result2 -eq 1 && $coin_flip_result3 -eq 1 ]]
+        then
+                (( HTT_count++ ))
+        elif [[ $coin_flip_result1 -eq 1 && $coin_flip_result2 -eq 0 && $coin_flip_result3 -eq 0 ]]
+        then
+                (( THH_count++ ))
+        elif [[ $coin_flip_result1 -eq 1 && $coin_flip_result2 -eq 0 && $coin_flip_result3 -eq 1 ]]
+        then
+                (( THT_count++ ))
+        elif [[ $coin_flip_result1 -eq 1 && $coin_flip_result2 -eq 1 && $coin_flip_result3 -eq 0 ]]
+        then
+                (( TTH_count++ ))
+        else
+                (( TTT_count++ ))
+        fi
+done
+
+dictCombinationCount[HHH]=$HHH_count
+dictCombinationCount[HHT]=$HHT_count
+dictCombinationCount[HTH]=$HTH_count
+dictCombinationCount[HTT]=$HTT_count
+dictCombinationCount[THH]=$THH_count
+dictCombinationCount[THT]=$THT_count
+dictCombinationCount[TTH]=$TTH_count
+dictCombinationCount[TTT]=$TTT_count
+
+dictCombinationPercentage[HHH]=$(( $HHH_count*100/$n ))
+dictCombinationPercentage[HHT]=$(( $HHT_count*100/$n ))
+dictCombinationPercentage[HTH]=$(( $HTH_count*100/$n ))
+dictCombinationPercentage[HTT]=$(( $HTT_count*100/$n ))
+dictCombinationPercentage[THH]=$(( $THH_count*100/$n ))
+dictCombinationPercentage[THT]=$(( $THT_count*100/$n ))
+dictCombinationPercentage[TTH]=$(( $TTH_count*100/$n ))
+dictCombinationPercentage[TTT]=$(( $TTT_count*100/$n ))
+
 echo "Combination Singlet: " ${!dictCombinationCount[@]}
 echo "Count H and T : " ${dictCombinationCount[@]}
 echo "Percentage :" ${dictCombinationPercentage[@]}
