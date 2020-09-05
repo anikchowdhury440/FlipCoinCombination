@@ -26,5 +26,5 @@ dictCombinationPercentage[H]=$(( $H_count*100/$n ))
 dictCombinationPercentage[T]=$(( $T_count*100/$n ))
 
 echo "Combination Singlet: " ${!dictCombinationCount[@]}
-echo "Count H or T : " ${dictCombinationCount[@]}
+echo "Count H and T : " ${dictCombinationCount[@]}
 echo "Percentage :" ${dictCombinationPercentage[@]}
