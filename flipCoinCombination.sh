@@ -116,14 +116,11 @@ dictCombinationPercentage[THT]=$(( $THT_count*100/$n ))
 dictCombinationPercentage[TTH]=$(( $TTH_count*100/$n ))
 dictCombinationPercentage[TTT]=$(( $TTT_count*100/$n ))
 
-echo "Combination " ${!dictCombinationCount[@]}
-echo "Count Combination : " ${dictCombinationCount[@]}
-echo "Percentage :" ${dictCombinationPercentage[@]}
-
 win_comb_percentage=0
 for key in ${!dictCombinationPercentage[@]}
 do
 	val=${dictCombinationPercentage[$key]}
+	array_percentage[$val]=$key
 	if [[ $win_comb_percentage -le $val ]]
 	then
 		combination=$key
@@ -131,4 +128,6 @@ do
 	fi
 done
 
+echo "Sorted Percentage: ${!array_percentage[@]} "
+echo "Combination: ${array_percentage[@]} "
 echo "Winning Combination: $combination"
